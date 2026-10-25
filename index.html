@@ -63,8 +63,6 @@
             </div>
             <div class="top-icons">
                 <button class="icon-btn" onclick="toggleDarkMode()">☀️</button>
-                <button class="icon-btn" onclick="alert('بحث سريع')">🔍</button>
-                <button class="icon-btn" onclick="alert('HIST122 - متطلبات المنتصف')">?</button>
             </div>
         </div>
 
@@ -83,71 +81,22 @@
                 <p>المادة المطلوبة: من الأسبوع الأول حتى نهاية الأسبوع السابع.</p>
             </div>
 
-            <!-- الأسبوع الأول -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 01</span><span>0 من 25 سؤال</span></div>
-                <h2>مقدمة في تاريخ البحرين والموقع الجغرافي</h2>
-                <p>الموقع الاستراتيجي والخصائص المكانية.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع الأول')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع الثاني -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 02</span><span>0 من 25 سؤال</span></div>
-                <h2>حضارة دلمون الآثار والمكتشفات المبكرة</h2>
-                <p>مركز التجارة الحضاري وتلال المدافن.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع الثاني')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع الثالث -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 03</span><span>0 من 25 سؤال</span></div>
-                <h2>مملكة تايلوس والعصور الهلنستية</h2>
-                <p>الآثار والعملات وطرق التجارة اليونانية.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع الثالث')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع الرابع -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 04</span><span>0 من 25 سؤال</span></div>
-                <h2>فترة أوال ودخول الإسلام</h2>
-                <p>التحولات الكبرى في تاريخ البحرين الإسلامي.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع الرابع')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع الخامس -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 05</span><span>0 من 25 سؤال</span></div>
-                <h2>العصور الوسطى والغزوات الخارجية</h2>
-                <p>التحديات الإقليمية والسيادة البحرينية.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع الخامس')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع السادس -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 06</span><span>0 من 25 سؤال</span></div>
-                <h2>العهد البرتغالي والمقاومة الوطنية</h2>
-                <p>نضال الشعب البحريني ضد الاحتلال البرتغالي.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع السادس')">ادخل الأسبوع</button>
-            </div>
-
-            <!-- الأسبوع السابع -->
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">الأسبوع 07</span><span>0 من 25 سؤال</span></div>
-                <h2>قيام الدولة الحديثة وتأسيس أسرة آل خليفة</h2>
-                <p>تأسيس الدولة واستتباب الأمن والاستقرار.</p>
-                <button class="action-btn" onclick="alert('جاري فتح محتوى الأسبوع السابع')">ادخل الأسبوع</button>
-            </div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 01</span><span>0 من 25 سؤال</span></div><h2>مقدمة في تاريخ البحرين والموقع الجغرافي</h2><p>الموقع الاستراتيجي والخصائص المكانية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 02</span><span>0 من 25 سؤال</span></div><h2>حضارة دلمون الآثار والمكتشفات المبكرة</h2><p>مركز التجارة الحضاري وتلال المدافن.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 03</span><span>0 من 25 سؤال</span></div><h2>مملكة تايلوس والعصور الهلنستية</h2><p>الآثار والعملات وطرق التجارة اليونانية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 04</span><span>0 من 25 سؤال</span></div><h2>فترة أوال ودخول الإسلام</h2><p>التحولات الكبرى في تاريخ البحرين الإسلامي.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 05</span><span>0 من 25 سؤال</span></div><h2>العصور الوسطى والغزوات الخارجية</h2><p>التحديات الإقليمية والسيادة البحرينية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 06</span><span>0 من 25 سؤال</span></div><h2>العهد البرتغالي والمقاومة الوطنية</h2><p>نضال الشعب البحريني ضد الاحتلال البرتغالي.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
+            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 07</span><span>0 من 25 سؤال</span></div><h2>قيام الدولة الحديثة وتأسيس أسرة آل خليفة</h2><p>تأسيس الدولة واستتباب الأمن والاستقرار.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
         </div>
 
-        <!-- 2. المراجعة الشاملة (مطابقة تماماً للصورة) -->
+        <!-- 2. المراجعة الشاملة -->
         <div id="review" class="section-content">
             <div class="card">
                 <h2>المراجعة الشاملة</h2>
-                <p>اختر النطاق من النطاق، الأداة تستعمل في كل أدوات هذه الصفحة.</p>
+                <p>اختر النطاق وأداة المراجعة:</p>
                 
-                <p style="margin-top: 15px; font-weight: bold;">النطاق:</p>
-                <div class="sub-tabs">
+                <div class="sub-tabs" style="margin-top: 10px;">
                     <div class="sub-tab active" onclick="setScope(this)">كل الأسابيع</div>
                     <div class="sub-tab" onclick="setScope(this)">الأسبوع 01</div>
                     <div class="sub-tab" onclick="setScope(this)">الأسبوع 02</div>
@@ -158,20 +107,18 @@
                     <div class="sub-tab" onclick="setScope(this)">الأسبوع 07</div>
                 </div>
 
-                <div class="sub-tabs" style="margin-top: 15px;">
-                    <div class="sub-tab" onclick="alert('مراجعة اليوم')">مراجعة اليوم</div>
-                    <div class="sub-tab" onclick="alert('جلسة ذكية')">جلسة ذكية</div>
-                    <div class="sub-tab" onclick="alert('تدريب سريع')">التدريب</div>
-                    <div class="sub-tab" onclick="alert('محاكاة الاختبار')">محاكاة الاختبار</div>
-                    <div class="sub-tab" onclick="alert('أخطائي السابقة')">أخطائي</div>
-                    <div class="sub-tab" onclick="alert('البطاقات التعليمية')">البطاقات</div>
-                    <div class="sub-tab" onclick="alert('ملخصات PDF')">الملخص وPDF</div>
+                <div class="sub-tabs" style="margin-top: 10px;">
+                    <div class="sub-tab active">جلسة ذكية</div>
+                    <div class="sub-tab">محاكاة الاختبار</div>
+                    <div class="sub-tab">أخطائي</div>
+                    <div class="sub-tab">البطاقات</div>
+                    <div class="sub-tab">ملخصات PDF</div>
                 </div>
 
                 <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 15px;">
                     <h3 style="margin-top: 0; color: var(--primary);">محاكاة الاختبار</h3>
-                    <p>اختبار من متعدد (صح وخطأ + 25 اختيار)، مثل الامتحان الحقيقي.</p>
-                    <button class="action-btn" onclick="alert('بدء الاختبار الشامل (50 سؤال، 60 دقيقة)')">ابدأ الاختبار (50 سؤال، 60 دقيقة)</button>
+                    <p>اختبار من متعدد (صح وخطأ + اختيار من متعدد)، مثل الامتحان الحقيقي.</p>
+                    <button class="action-btn" style="margin-top: 8px;">ابدأ الاختبار الشامل (50 سؤال)</button>
                 </div>
             </div>
         </div>
@@ -196,8 +143,7 @@
         }
 
         function setScope(element) {
-            const parent = element.parentElement;
-            parent.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
+            element.parentElement.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
         }
 
