@@ -3,153 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تاريخ البحرين والمواطنة - HIST122</title>
+    <title>تاريخ البحرين الحديث والمواطنة - HIST 122</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f7f5f0;
+            --bg-color: #f7f6f2;
             --card-bg: #ffffff;
-            --text-main: #2b2623;
-            --primary: #4a403b;
-            --accent: #b45309;
-            --border: #e6e2dd;
-            --tab-active: #e7e5e4;
+            --text-color: #2c2c2c;
+            --accent-color: #8c6d46;
+            --accent-hover: #705332;
+            --border-color: #e3dcd2;
+            --true-color: #2e7d32;
+            --false-color: #c62828;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        body.dark-mode {
-            --bg-color: #1c1917;
-            --card-bg: #292524;
-            --text-main: #f5f5f4;
-            --primary: #d6d3d1;
-            --accent: #f59e0b;
-            --border: #44403c;
-            --tab-active: #44403c;
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
-        body { font-family: system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 15px; transition: background 0.3s; }
-        .container { max-width: 700px; margin: 0 auto; }
-        
-        .top-nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 15px; }
-        .logo-area { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 1.05rem; }
-        .code-badge { background: var(--border); padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; color: var(--accent); }
-        .top-icons { display: flex; gap: 6px; }
-        .icon-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-main); padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
 
-        .tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
-        .tab { background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; color: var(--primary); white-space: nowrap; }
-        .tab.active { background: var(--tab-active); font-weight: bold; border-color: var(--primary); }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .chapter-tag { color: var(--accent); font-size: 0.85rem; font-weight: bold; }
-        
-        h2 { font-size: 1.1rem; margin: 5px 0 8px 0; color: var(--primary); }
-        p { font-size: 0.85rem; color: #78716c; margin: 5px 0; }
-        
-        .action-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 12px; font-size: 0.9rem; }
-        
-        .section-content { display: none; }
-        .section-content.active { display: block; }
-        
-        .sub-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 15px; }
-        .sub-tab { background: var(--card-bg); border: 1px solid var(--border); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; color: var(--primary); }
-        .sub-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .exam-notice {
+            background: #fff8e1;
+            border-right: 5px solid #ffb300;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .exam-notice h3 {
+            margin-top: 0;
+            color: #b78103;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* تنسيق الأقسام والمحتوى */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2, h3, h4 {
+            color: var(--accent-color);
+        }
+
+        ul {
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .nav-tab {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .nav-tab.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* تنسيق محاكاة الاختبار */
+        .question-box {
+            background: #faf8f5;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .options label {
+            display: block;
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .options label:hover {
+            background: #f0ebe1;
+        }
+
+        .options input {
+            margin-left: 10px;
+        }
+
+        .result-box {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- الهيدر العلوي -->
-        <div class="top-nav">
-            <div class="logo-area">
-                <span>🏛️ تاريخ البحرين</span>
-                <span class="code-badge">HIST122</span>
-            </div>
-            <div class="top-icons">
-                <button class="icon-btn" onclick="toggleDarkMode()">☀️</button>
-            </div>
+
+<header>
+    <h1>تاريخ البحرين الحديث والمواطنة (HIST 122)</h1>
+</header>
+
+<div class="container">
+
+    <!-- شريط التنقل العلوي -->
+    <div class="nav-tabs">
+        <div class="nav-tab active" onclick="switchTab('home')">الرئيسية</div>
+        <div class="nav-tab" onclick="switchTab('summary')">ملخص المحاضرات</div>
+        <div class="nav-tab" onclick="switchTab('exam')">محاكاة الاختبار (50 سؤالاً)</div>
+    </div>
+
+    <!-- قسم الرئيسية -->
+    <div id="home" class="content-section active">
+        <div class="exam-notice">
+            <h3>إشعار هام للامتحان</h3>
+            <p><strong>موعد امتحان المنتصف:</strong> السبت 31 أكتوبر 2026</p>
+            <p><strong>المادة المطلوبة:</strong> من الأسبوع الأول حتى نهاية الأسبوع السادس.</p>
         </div>
 
-        <!-- التبويبات الرئيسية -->
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('home', event)">الرئيسية</div>
-            <div class="tab" onclick="switchTab('review', event)">المراجعة الشاملة</div>
-            <div class="tab" onclick="switchTab('settings', event)">الإعدادات</div>
-        </div>
-
-        <!-- 1. الرئيسية (الأسابيع من 1 إلى 7) -->
-        <div id="home" class="section-content active">
-            <div class="card">
-                <div class="card-header"><span class="chapter-tag">إشعار هام للامتحان</span></div>
-                <h2>موعد امتحان المنتصف: السبت 31 أكتوبر 2026</h2>
-                <p>المادة المطلوبة: من الأسبوع الأول حتى نهاية الأسبوع السابع.</p>
-            </div>
-
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 01</span><span>0 من 25 سؤال</span></div><h2>مقدمة في تاريخ البحرين والموقع الجغرافي</h2><p>الموقع الاستراتيجي والخصائص المكانية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 02</span><span>0 من 25 سؤال</span></div><h2>حضارة دلمون الآثار والمكتشفات المبكرة</h2><p>مركز التجارة الحضاري وتلال المدافن.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 03</span><span>0 من 25 سؤال</span></div><h2>مملكة تايلوس والعصور الهلنستية</h2><p>الآثار والعملات وطرق التجارة اليونانية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 04</span><span>0 من 25 سؤال</span></div><h2>فترة أوال ودخول الإسلام</h2><p>التحولات الكبرى في تاريخ البحرين الإسلامي.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 05</span><span>0 من 25 سؤال</span></div><h2>العصور الوسطى والغزوات الخارجية</h2><p>التحديات الإقليمية والسيادة البحرينية.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 06</span><span>0 من 25 سؤال</span></div><h2>العهد البرتغالي والمقاومة الوطنية</h2><p>نضال الشعب البحريني ضد الاحتلال البرتغالي.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-            <div class="card"><div class="card-header"><span class="chapter-tag">الأسبوع 07</span><span>0 من 25 سؤال</span></div><h2>قيام الدولة الحديثة وتأسيس أسرة آل خليفة</h2><p>تأسيس الدولة واستتباب الأمن والاستقرار.</p><button class="action-btn" onclick="switchTab('review', event)">ادخل الأسبوع</button></div>
-        </div>
-
-        <!-- 2. المراجعة الشاملة -->
-        <div id="review" class="section-content">
-            <div class="card">
-                <h2>المراجعة الشاملة</h2>
-                <p>اختر النطاق وأداة المراجعة:</p>
-                
-                <div class="sub-tabs" style="margin-top: 10px;">
-                    <div class="sub-tab active" onclick="setScope(this)">كل الأسابيع</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 01</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 02</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 03</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 04</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 05</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 06</div>
-                    <div class="sub-tab" onclick="setScope(this)">الأسبوع 07</div>
-                </div>
-
-                <div class="sub-tabs" style="margin-top: 10px;">
-                    <div class="sub-tab active">جلسة ذكية</div>
-                    <div class="sub-tab">محاكاة الاختبار</div>
-                    <div class="sub-tab">أخطائي</div>
-                    <div class="sub-tab">البطاقات</div>
-                    <div class="sub-tab">ملخصات PDF</div>
-                </div>
-
-                <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-top: 15px;">
-                    <h3 style="margin-top: 0; color: var(--primary);">محاكاة الاختبار</h3>
-                    <p>اختبار من متعدد (صح وخطأ + اختيار من متعدد)، مثل الامتحان الحقيقي.</p>
-                    <button class="action-btn" style="margin-top: 8px;">ابدأ الاختبار الشامل (50 سؤال)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. الإعدادات -->
-        <div id="settings" class="section-content">
-            <div class="card">
-                <h2>إعدادات الموقع</h2>
-                <p>موقعك الخاص لمادة تاريخ البحرين والمواطنة HIST122.</p>
-            </div>
+        <div class="card">
+            <h2>مرحباً بك في مقرر HIST 122</h2>
+            <p>اختر من القوائم بالأعلى لاستعراض المحاضرات المفصلة أو الدخول إلى نظام محاكاة الاختبار التدريبي (25 اختيار من متعدد + 25 صح وخطأ).</p>
+            <button onclick="switchTab('exam')">ابدأ امتحان المنتصف التجريبي (60 دقيقة)</button>
         </div>
     </div>
 
-    <script>
-        function switchTab(tabId, event) {
-            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            if(event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
+    <!-- قسم ملخص المحاضرات -->
+    <div id="summary" class="content-section">
+        <div class="card">
+            <h2>الأسبوع الأول: الشخصية المكانية للبحرين</h2>
+            <h3>1. مقدمة وأسس الهوية الإقليمية:</h3>
+            <ul>
+                <li><strong>الأساس الطبيعي:</strong> الموقع، المساحة، والخصائص الطبيعية (التضاريس، المناخ، النبات، والتربة).</li>
+                <li><strong>الأساس البشري والاجتماعي:</strong> عدد السكان، الديموغرافيا، الاقتصاد، الاجتماع، الحضارة، والثقافة (السلالة، الدين، اللغة).</li>
+                <li><strong>الأساس الاقتصادي:</strong> نمط استغلال الأرض في الزراعة، الرعي، التعدين، أو الصناعة.</li>
+                <li><strong>الأساس الإداري والسياسي:</strong> الأقاليم الإدارية والسياسية.</li>
+                <li><strong>الأساس الجغرافي الشامل:</strong> يستوعب كل العناصر والمتغيرات السابقة.</li>
+            </ul>
+            <p><em>معادلة الشخصية المكانية:</em> (مساحة بخصائص معينة + موقع متميز + إنسان قادر = الشخصية المكانية).</p>
+
+            <h3>2. تسمية البحرين (الدولة والإقليم):</h3>
+            <ul>
+                <li><strong>إقليم البحرين:</strong> مجال مكاني واسع امتد شرقي شبه الجزيرة العربية بين البصرة شمالاً وساحل عمان جنوباً (المنطقة الشرقية، الكويت، قطر، غرب الإمارات، وأوال)، وعاصمته الأحساء.</li>
+                <li><strong>المسميات التاريخية:</strong> دلمون (أرض الخلود)، تايلوس (منذ عصر الإغريق)، أوال (نسبة لمعبود قبيلة ربيعة).</li>
+                <li>فصلت بريطانيا الأرخبيل عن توابعه في معاهدة سبتمبر 1868م ليقتصر المسمى على مملكة البحرين الحالية.</li>
+            </ul>
+
+            <h3>3. المساحة والحدود:</h3>
+            <ul>
+                <li>مساحة اليابس: 788 كم² | المياه الإقليمية: 7,481.21 كم² | الإجمالي: 8,269.21 كم².</li>
+                <li>تكوين الأرخبيل: 33 جزيرة طبيعية + 51 جزيرة اصطناعية = 84 جزيرة.</li>
+                <li><strong>الجزر الشمالية:</strong> الأكبر والمأهولة (جزيرة البحرين 616.93 كم² بنسبة 80.48%، المحرق، سترة، أم النعسان، النبيه صالح).</li>
+                <li><strong>الجزر الجنوبية (حوار):</strong> 16 جزيرة صحراوية بمساحة 52.14 كم² على بعد 26 كم جنوب شرق رأس البر.</li>
+                <li>السواحل: 673 كم تحيط بها الأرصفة المرجانية (الفشوت).</li>
+            </ul>
+
+            <h3>4. الموقع الجغرافي والمناخ:</h3>
+            <ul>
+                <li><strong>فلكياً:</strong> بين دائرتي عرض 25.53° و 27.16° شمالاً، وخطي طول 50.26° و 51.11° شرقاً.</li>
+                <li><strong>جغرافياً:</strong> قلب الخليج العربي، تبعد 25 كم عن السعودية و2 كم عن قطر.</li>
+                <li><strong>المناخ:</strong> صحراوي حار جاف؛ صيف شديد الحرارة والرطوبة، وشتاء معتدل بأمطار قليلة (74 مم سنوياً). الرياح السائدة: الشمال (شمالية غربية) والكوس (جنوبية شرقية رطبة).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>الأسبوع الثاني: الاستيطان البشري، النمو السكاني، والتوزيع والموارد</h2>
+            <ul>
+                <li><strong>الاستيطان:</strong> تركز قديماً شمال جزيرة البحرين (باربار والدراز)، واستقبلت موجات قبلية (عبد القيس، بكر وتغلب، تميم، الأزد، وبنو عامر).</li>
+                <li><strong>النمو والتوزيع:</strong> بلغ تعداد السكان 1,594,654 نسمة عام 2024. تركز سكاني عالٍ في العاصمة والمحافظة الشمالية، بكثافة تتجاوز 2,031 نسمة/كم².</li>
+                <li><strong>الموارد الاقتصادية:</strong> صيد اللؤلؤ (عقود سابقة)، الزراعة وصيد الأسماك، النفط (حقل العوالي 1932 وأبو سعفة)، مصفاة بابكو (405 ألف برميل/يوم)، الغاز الطبيعي.</li>
+                <li><strong>التصنيع والخدمات:</strong> ألبا (الألمنيوم)، جيبك (البتروكيماويات)، البحرين للصلب، أسري لإصلاح السفن، وريادة في الخدمات المالية والصرّافة الإسلامية.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>الأسبوع الثالث والرابع: التاريخ القديم والعصور الإسلامية</h2>
+            <ul>
+                <li><strong>الحضارات القديمة:</strong> دلمون (2800-323 ق.م)، تايلوس (هيلنستية)، وأوال (استقرار قبائل ربيعة والشعر العربي).</li>
+                <li><strong>العصر الإسلامي:</strong> دخول الإسلام عام 8 هـ (رسالة النبي ﷺ عبر العلاء بن الحضرمي للمنذر بن ساوى)، تبعية للبصرة، بناء مسجد الخميس (عمر بن عبد العزيز).</li>
+                <li><strong>الدول المتتالية:</strong> ثورة الزنج، القرامطة، الدولة العيونية، السلغريين، والعصفوريون والجبور حتى الحملات البرتغالية.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>الأسبوع الخامس والسادس: الأطماع الأوروبية والصراعات الإقليمية (1500 - 1700م)</h2>
+            <ul>
+                <li><strong>الغزو البرتغالي:</strong> بعد رحلة فاسكو دي جاما (1498م)، نفذ البرتغاليون 4 حملات (أبرزها حملة أنطونيو كوريا وشرف الدين 1521م التي نجحت).</li>
+                <li><strong>الطرد والتحرر:</strong> قاد ركن الدين مسعود انتفاضة شعبية عام 1602م بدعم فارسي لطرد البرتغاليين.</li>
+                <li><strong>صراع القوى (القرن 17):</strong> تنافس بريطانيا (الهند الشرقية)، هولندا، وفرنسا. إقليمياً: تراجع العثمانيين، صعود اليعاربة في عمان، وسقوط الدولة الصفوية عام 1713م.</li>
+                <li><strong>حكام البحرين لاحقاً:</strong> عرب الساحل، اليعاربة، الهولة (النصور والحرم)، وآل مذكور حتى الفتح العتوبي (1783م).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- قسم محاكاة الاختبار -->
+    <div id="exam" class="content-section">
+        <div class="card">
+            <h2>محاكاة امتحان منتصف الفصل (HIST 122)</h2>
+            <p><strong>تفاصيل النموذج:</strong> 50 سؤالاً (25 اختيار من متعدد + 25 صح وخطأ). الوقت المخصص: 60 دقيقة.</p>
+            <button onclick="startExam()">ابدأ الاختبار الآن</button>
+        </div>
+        <div id="exam-container"></div>
+    </div>
+
+</div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    const examQuestions = [
+        // أسئلة الاختيار من متعدد (25 سؤالاً)
+        {type: 'mcq', q: "1. تبلغ مساحة اليابس (الجزر) في مملكة البحرين وفق بيانات 2024 نحو:", options: ["616.93 كم²", "788 كم²", "8,269.21 كم²", "52.14 كم²"], ans: 1},
+        {type: 'mcq', q: "2. أطلق اسم (أرض الخلود أو الحياة) خلال العصر السومري على:", options: ["تايلوس", "أوال", "دلمون", "الأحساء"], ans: 2},
+        {type: 'mcq', q: "3. تقع مجموعة جزر حوار الجنوبية على بعد كم من رأس البر؟", options: ["10 كم", "26 كم", "50 كم", "5 كم"], ans: 1},
+        {type: 'mcq', q: "4. اكتشف النفط التجاري في مملكة البحرين في حقل العوالي عام:", options: ["1932 م", "1934 م", "1968 م", "1984 م"], ans: 0},
+        {type: 'mcq', q: "5. أي من الشركات التالية تعد أكبر مصهر ألمنيوم ذي موقع واحد خارج الصين؟", options: ["شركة جيبك (GPIC)", "شركة ألبا (Alba)", "شركة أسري (ASRY)", "شركة البحرين للصلب"], ans: 1},
+        {type: 'mcq, q: "6. الحملة البرتغالية التي نجحت في فرض النفوذ على البحرين عام 1521م قادها:", options: ["بيرو دلبوكيرك", "جومز دي سوتومايور", "أنطونيو كوريا وشرف الدين", "سيماو دا كونها"], ans: 2},
+        {type: 'mcq', q: "7. قائد التمرد الشعبي ضد الاحتلال البرتغالي للبحرين عام 1602م هو:", options: ["ركن الدين مسعود", "براك بن غرير", "عبد الله العيوني", "المنذر بن ساوى"], ans: 0},
+        {type: 'mcq', q: "8. تأسست شركة الهند الشرقية البريطانية في عام:", options: ["1498 م", "1600 م", "1602 م", "1622 م"], ans: 1},
+        {type: 'mcq', q: "9. يبلغ عدد الجزر الإجمالي في أرخبيل البحرين (طبيعية واصطناعية):", options: ["33 جزيرة", "51 جزيرة", "84 جزيرة", "16 جزيرة"], ans: 2},
+        {type: 'mcq', q: "10. الرياح السائدة الباردة نسبياً والمعنشة في فصل الشتاء بالبحرين هي:", options: ["رياح الكوس", "رياح الشمال", "الرياح الموسمية", "الرياح التجارية"], ans: 1},
+        {type: 'mcq', q: "11. أول تعداد رسمي للسكان في البحرين أجرى في عام:", options: ["1932 م", "1941 م", "1968 م", "1984 م"], ans: 1},
+        {type: 'mcq', q: "12. تبلغ النسبة الأكبر من تركز السكان في البحرين ضمن محافظة:", options: ["المحافظة الجنوبية", "المحافظة الشمالية", "محافظة المحرق", "محافظة العاصمة"], ans: 3},
+        {type: 'mcq', q: "13. أي من الحضارات التالية مثلت الفترة الهلنستية في تاريخ البحرين؟", options: ["دلمون", "تايلوس", "أوال", "العيونية"], ans: 1},
+        {type: 'mcq', q: "14. تم بناء مسجد الخميس التاريخي في عهد الخليفة الأموي:", options: ["معاوية بن أبي سفيان", "عمر بن عبد العزيز", "عبد الملك بن مروان", "هشام بن عبد الملك"], ans: 1},
+        {type: 'mcq', q: "15. انتهى حكم الدولة العثمانية في الأحساء عام 1670م على يد:", options: ["اليعاربة", "آل حميد من بني خالد", "القرامطة", "السلغريين"], ans: 1},
+        {type: 'mcq', q: "16. دخلت البحرين في الإسلام في العام الهجري:", options: ["5 هـ", "8 هـ", "10 هـ", "12 هـ"], ans: 1},
+        {type: 'mcq', q: "17. الصحابي الذي حمل رسالة النبي ﷺ إلى المنذر بن ساوى التميمي هو:", options: ["عمر بن الخطاب", "العلاء بن الحضرمي", "علي بن أبي طالب", "معاذ بن جبل"], ans: 1},
+        {type: 'mcq', q: "18. شركة بتروكيماويات مشتركة مخصصة لإنتاج الأمونيا والميثانول هي:", options: ["ألبا", "جيبك (GPIC)", "بابكو", "أسري"], ans: 1},
+        {type: 'mcq', q: "19. الوسيلة التجارية الأساسية وعصب اقتصاد البحرين قبل اكتشاف النفط كانت:", options: ["الزراعة", "صيد اللؤلؤ", "تجارة الحديد", "صناعة السفن الخشبية"], ans: 1},
+        {type: 'mcq', q: "20. بدأت الحملات البرتغالية الاستكشافية نحو الهند بعد عبور رأس الرجاء الصالح بقيادة:", options: ["فاسكو دي جاما", "أنطونيو كوريا", "ألفونسو ألبوكيرك", "بارتولوميو ديازقة"], ans: 0},
+        {type: 'mcq', q: "21. تتراوح نسبة الرطوبة في فصل الصيف بالبحرين لتتجاوز غالباً:", options: ["30%", "50%", "70%", "90%"], ans: 2},
+        {type: 'mcq', q: "22. تأسست شركة أسرى (ASRY) المتخصصة في:", options: ["تكوير الحديد", "إصلاح السفن", "الألمنيوم", "التكرير"], ans: 1},
+        {type: 'mcq', q: "23. تقع مملكة البحرين فلكياً ضمن إقليم:", options: ["المعتدل البارد", "الاستوائي المطير", "الصحاري الحارة الجافة", "شبه القطب الشمالي"], ans: 2},
+        {type: 'mcq', q: "24. سقطت الدولة الصفوية في فارس عام 1713م على يد:", options: ["الأفغان بقيادة محمود الغلجائي", "اليعاربة العمانيين", "العثمانيين", "البرتغاليين"], ans: 0},
+        {type: 'mcq', q: "25. فصلت بريطانيا الأرخبيل عن توابعه الإقليمية في معاهدة تاريخية جرت في:", options: ["سبتمبر 1868 م", "يونيو 1932 م", "أغسطس 1971 م", "يناير 1820 م"], ans: 0},
+
+        // أسئلة الصح والخطأ (25 سؤالاً)
+        {type: 'tf', q: "26. تُكسب عناصر المكان الكيان الجغرافي شخصيته المكانية وفق معادلة المساحة والموقع والإنسان.", ans: true},
+        {type: 'tf', q: "27. امتد إقليم البحرين التاريخي قديماً من البصرة شمالاً حتى ساحل عمان جنوباً.", ans: true},
+        {type: 'tf', q: "28. تبلغ مساحة المياه الإقليمية لمملكة البحرين أكثر من 7,400 كم².", ans: true},
+        {type: 'tf', q: "29. جزيرة البحرين (المنامة) تمثل النسبة الأقل من مساحة اليابس مقارنة ببقية الجزر.", ans: false},
+        {type: 'tf', q: "30. الفشوت هي عبارة عن أراضٍ زراعية مرتفعة تشتهر بزراعة النخيل.", ans: false},
+        {type: 'tf', q: "31. تتميز درجات الحرارة في فصل الصيف بالبحرين بمتوسطات تصل إلى 40 درجة مئوية.", ans: true},
+        {type: 'tf', q: "32. أول تعداد رسمي للسكان في البحرين تم تنفيذه في عام 1941م.", ans: true},
+        {type: 'tf', q: "33. تركز الاستيطان البشري القديم في البحرين في الأجزاء الجنوبية والصحراوية المقفرة.", ans: false},
+        {type: 'tf', q: "34. صيد اللؤلؤ كان يمثل عصب الاقتصاد البحريني حتى ثلاثينيات القرن العشرين.", ans: true},
+        {type: 'tf', q: "35. تم اكتشاف النفط لأول مرة في حقل العوالي في شهر يونيو من عام 1932م.", ans: true},
+        {type: 'tf', q: "36. حضارة دلمون اشتهرت بتجارة النحاس والأختام المستديرة والأوزان.", ans: true},
+        {type: 'tf', q: "37. دخل أهل البحرين (عبد القيس) في الإسلام متأخرين بعد فتح مكة بسنوات طويلة.", ans: false},
+        {type: 'tf', q: "38. حركة القرامطة اتخذت من الأحساء قاعدة لانطلاق هجماتها ونفوذها الإقليمي.", ans: true},
+        {type: 'tf', q: "39. نجح البرتغاليون في حملتهم الأولى بقيادة بيرو دلبوكيرك عام 1514م في احتلال البحرين.", ans: false},
+        {type: 'tf', q: "40. أدت قسوة الاحتلال البرتغالي وسياسة الاحتكار إلى سخط شعبي واسع في البحرين.", ans: true},
+        {type: 'tf', q: "41. تأسست شركة الهند الشرقية الهولندية في عام 1602م.", ans: true},
+        {type: 'tf', q: "42. دولة اليعاربة في عمان لعبت دوراً بارزاً في طرد البرتغاليين من مسقط وصحار عام 1650م.", ans: true},
+        {type: 'tf', q: "43. زادت نسبة الأمطار السنوية في البحرين لتتجاوز 500 مم سنوياً.", ans: false},
+        {type: 'tf', q: "44. شركة ألبا (Alba) تعتبر من أبرز شركات صناعة وتصدير الألمنيوم عالمياً.", ans: true},
+        {type: 'tf', q: "45. تقع البحرين جغرافياً في منتصف المسافة بين مضيق هرمز وشط العرب.", ans: true},
+        {type: 'tf', q: "46. تعد الكثافة السكانية في البحرين من أعلى الكثافات السكانية على مستوى الدول العربية.", ans: true},
+        {type: 'tf', q: "47. اقتصرت المسميات التاريخية للبحرين على مسمى واحد فقط عبر العصور.", ans: false},
+        {type: 'tf', q: "48. ساهمت الجمارك كمصدر مباشر رئيسي في دخل حكومة البحرين قبل اكتشاف النفط.", ans: true},
+        {type: 'tf', q: "49. تم تصدير أول شحنة نفط بحرينية في شهر يونيو من عام 1934م.", ans: true},
+        {type: 'tf', q: "50. انتهى النفوذ البرتغالي نهائياً في البحرين إثر الانتفاضة الشعبية بقيادة ركن الدين مسعود عام 1602م.", ans: true}
+    ];
+
+    function startExam() {
+        let html = '<div class="card"><h3>نموذج امتحان المنتصف (50 سؤالاً)</h3><form id="quiz-form">';
+        
+        examQuestions.forEach((item, index) => {
+            html += `<div class="question-box"><p><strong>س${index+1}: ${item.q}</strong></p><div class="options">`;
+            if(item.type === 'mcq') {
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${index}" value="${optIdx}"> ${opt}</label>`;
+                });
+            } else {
+                html += `<label><input type="radio" name="q${index}" value="true"> صح</label>`;
+                html += `<label><input type="radio" name="q${index}" value="false"> خطأ</label>`;
             }
-        }
+            html += `</div></div>`;
+        });
 
-        function setScope(element) {
-            element.parentElement.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-        }
+        html += '<button type="button" onclick="submitExam()">تسليم الاختبار وعرض النتيجة</button></form></div>';
+        document.getElementById('exam-container').innerHTML = html;
+        window.scrollTo(0, document.getElementById('exam-container').offsetTop);
+    }
 
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
+    function submitExam() {
+        let score = 0;
+        examQuestions.forEach((item, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            if(selected) {
+                if(item.type === 'mcq') {
+                    if(parseInt(selected.value) === item.ans) score++;
+                } else {
+                    const val = selected.value === 'true';
+                    if(val === item.ans) score++;
+                }
+            }
+        });
+
+        let resHtml = `<div class="card result-box"><h3>نتيجة الاختبار النهائي</h3><p>لقد حصلت على <strong>${score} / 50</strong></p>`;
+        if(score >= 45) resHtml += `<p style="color:var(--true-color);">ممتاز جداً! جاهز تماماً لامتحان المنتصف.</p>`;
+        else if(score >= 35) resHtml += `<p style="color:var(--accent-color);">جيد جداً، ولكن يفضل مراجعة بعض الأسبوعيات.</p>`;
+        else resHtml += `<p style="color:var(--false-color);">تحتاج إلى مراجعة الملخصات بدقة أكبر قبل دخول الاختبار.</p>`;
+        resHtml += `<button onclick="startExam()">إعادة المحاولة</button></div>`;
+        
+        document.getElementById('exam-container').innerHTML = resHtml;
+        window.scrollTo(0, document.getElementById('exam-container').offsetTop);
+    }
+</script>
+
 </body>
 </html>
+
