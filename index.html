@@ -1,42 +1,151 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تاريخ البحرين الحديث والمواطنة - HIST122</title>
+    <title>تاريخ البحرين والمواطنة - HIST122</title>
     <style>
         :root {
-            --bg-color: #fcfbf9;
+            --bg-color: #f7f5f0;
             --card-bg: #ffffff;
-            --text-main: #2d2a26;
-            --primary: #44403c;
+            --text-main: #2b2623;
+            --primary: #4a403b;
             --accent: #b45309;
-            --border: #e7e5e4;
+            --border: #e6e2dd;
+            --tab-active: #e7e5e4;
         }
-        body { font-family: system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
-        .badge { background: var(--accent); color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        h1, h2 { color: var(--primary); }
-        .btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        body.dark-mode {
+            --bg-color: #1c1917;
+            --card-bg: #292524;
+            --text-main: #f5f5f4;
+            --primary: #d6d3d1;
+            --accent: #f59e0b;
+            --border: #44403c;
+            --tab-active: #44403c;
+        }
+        body { font-family: system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 15px; transition: background 0.3s; }
+        .container { max-width: 700px; margin: 0 auto; }
+        
+        /* الهيدر العلوي */
+        .top-nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 15px; }
+        .logo-area { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 1.05rem; }
+        .code-badge { background: var(--border); padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; color: var(--accent); }
+        .top-icons { display: flex; gap: 6px; }
+        .icon-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-main); padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+
+        /* شريط التبويبات */
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
+        .tab { background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; color: var(--primary); white-space: nowrap; }
+        .tab.active { background: var(--tab-active); font-weight: bold; border-color: var(--primary); }
+
+        /* البطاقات */
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .chapter-tag { color: var(--accent); font-size: 0.85rem; font-weight: bold; }
+        
+        h2 { font-size: 1.1rem; margin: 5px 0 8px 0; color: var(--primary); }
+        p { font-size: 0.85rem; color: #78716c; margin: 5px 0; }
+        
+        .action-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 12px; font-size: 0.9rem; }
+        
+        .section-content { display: none; }
+        .section-content.active { display: block; }
+        
+        /* تنسيق أدوات المراجعة الشاملة */
+        .sub-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 15px; }
+        .sub-tab { background: var(--card-bg); border: 1px solid var(--border); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>تاريخ البحرين والمواطنة</h1>
-            <span class="badge">HIST122</span>
-        </header>
-        <div class="card">
-            <h2>إشعار هام للامتحان</h2>
-            <p><strong>موعد امتحان المنتصف:</strong> السبت 31 أكتوبر 2026</p>
-            <p><strong>المادة المطلوبة:</strong> من الأسبوع الأول حتى نهاية الأسبوع السابع.</p>
+        <!-- الهيدر العلوي -->
+        <div class="top-nav">
+            <div class="logo-area">
+                <span>🏛️ تاريخ البحرين</span>
+                <span class="code-badge">HIST122</span>
+            </div>
+            <div class="top-icons">
+                <button class="icon-btn" onclick="toggleDarkMode()">☀️</button>
+                <button class="icon-btn" onclick="alert('خاصية البحث مفعلة')">🔍</button>
+                <button class="icon-btn" onclick="alert('مادة تاريخ البحرين والمواطنة - منتصف الفصل')">?</button>
+            </div>
         </div>
-        <div class="card">
-            <h2>الفصل الأول: الشخصية المكانية للبحرين</h2>
-            <button class="btn" onclick="alert('مرحباً بك في فصل الشخصية المكانية!')">ادخل الفصل</button>
+
+        <!-- التبويبات الرئيسية (مطابقة للفيديو) -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('home', event)">الرئيسية</div>
+            <div class="tab" onclick="switchTab('review', event)">المراجعة الشاملة</div>
+            <div class="tab" onclick="switchTab('settings', event)">الإعدادات</div>
+        </div>
+
+        <!-- 1. الرئيسية -->
+        <div id="home" class="section-content active">
+            <div class="card">
+                <div class="card-header">
+                    <span class="chapter-tag">إشعار هام</span>
+                </div>
+                <h2>متطلبات امتحان المنتصف (Weeks 1-7)</h2>
+                <p>تغطية شاملة لجميع المحاضرات والمقررات المطلوبة لاجتياز اختبار المنتصف.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="chapter-tag">الفصل الأول</span>
+                    <span style="font-size: 0.75rem; color: #78716c;">0 من 50 سؤال</span>
+                </div>
+                <h2>الشخصية المكانية للبحرين وأهميتها الاستراتيجية</h2>
+                <p>الموقع الجغرافي، الحدود، والخصائص الطبيعية.</p>
+                <button class="action-btn" onclick="alert('جاري فتح محتوى الفصل الأول...')">ادخل الفصل</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="chapter-tag">الفصل الثاني</span>
+                    <span style="font-size: 0.75rem; color: #78716c;">0 من 45 سؤال</span>
+                </div>
+                <h2>البحرين في المصادر التاريخية والحضارات القديمة</h2>
+                <p>حضارة دلمون، الآثار، والمكتشفات التاريخية.</p>
+                <button class="action-btn" onclick="alert('جاري فتح محتوى الفصل الثاني...')">ادخل الفصل</button>
+            </div>
+        </div>
+
+        <!-- 2. المراجعة الشاملة -->
+        <div id="review" class="section-content">
+            <div class="card">
+                <h2>أدوات التدريب والمحاكاة</h2>
+                <p>اختر أداة المراجعة للبدء في اختبار معلوماتك:</p>
+                <div class="sub-tabs" style="margin-top: 12px;">
+                    <div class="sub-tab" onclick="alert('بدء جلسة التدريب الذكي')">جلسة ذكية</div>
+                    <div class="sub-tab" onclick="alert('بدء محاكاة الاختبار الفعلي')">محاكاة الاختبار</div>
+                    <div class="sub-tab" onclick="alert('عرض أخطائك السابقة')">أخطائي</div>
+                    <div class="sub-tab" onclick="alert('البطاقات التعليمية السريعة')">البطاقات</div>
+                </div>
+                <button class="action-btn" onclick="alert('بدء الاختبار الشامل (50 سؤال)')">ابدأ الاختبار الشامل (50 سؤال)</button>
+            </div>
+        </div>
+
+        <!-- 3. الإعدادات -->
+        <div id="settings" class="section-content">
+            <div class="card">
+                <h2>إعدادات الموقع</h2>
+                <p>هذا الموقع مخصص حصرياً لتنظيم مواد مادة HIST122 ومراجعتها بكفاءة.</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </body>
 </html>
+
